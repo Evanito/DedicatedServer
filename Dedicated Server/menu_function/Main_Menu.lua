@@ -14,6 +14,7 @@ DedicatedServer.Default_Settings = {
 	},
 	["Lobby_Min_Amount_To_Start"] = 1,
 	["Lobby_Time_To_Start_Game"] = 36,
+	["Lobby_Time_To_Forced_Start_Game"] = 72,
 	["Lobby_Do_Countdown_Before_Start_Game"] = 4,
 	["Lobby_Default_Setting"] = {
 		["job"] = "jewelry_store",
@@ -41,6 +42,8 @@ DedicatedServer.Default_Settings = {
 		"This bot will auto open lobby and start the game",
 		"If bot stuck, it means someone isn't ready or loaded"
 	},
+	["Game_Kcik_Who_Not_Ready_Yet"] = 40,
+	["Addons_ChatCommand_enable"] = true,
 }
 
 Hooks:Add("LocalizationManagerPostInit", "DedicatedServer_loc", function(loc)
@@ -119,6 +122,7 @@ function DedicatedServer:Load_Settings()
 			self.Settings[id] = self.Default_Settings[id]
 		end
 	end
+	self:Save_Settings()
 end
 
 function DedicatedServer:Reset_Last_Data()

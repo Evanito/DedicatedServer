@@ -9,6 +9,7 @@ local rtd_time = {0, 0, 0, 0}
 --local time2loopcheck = false
 local now_version = "[Dedicated Server.WIP.1.2]"
 
+_G.DedicatedServer = _G.DedicatedServer or {}
 _G.ChatCommand = _G.ChatCommand or {}
 ChatCommand.VIP_LIST = ChatCommand.VIP_LIST or {}
 ChatCommand.VIP_LIST_IDX = ChatCommand.VIP_LIST_IDX or {}
@@ -243,6 +244,9 @@ function ChatManager:say(_msg, _msg2)
 end
 function ChatManager:receive_message_by_peer(channel_id, peer, message)
 	_receive_message_by_peer_orig(self, channel_id, peer, message)
+	if not DedicatedServer or not DedicatedServer.Settings or not DedicatedServer.Settings.Addons_ChatCommand_enable then
+		return
+	end
 	local commad = string.lower(tostring(message))
 	local _is_Host = peer:id() == 1 --HOST
 	local _is_VIP = is_VIP(peer) --VIP
