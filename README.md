@@ -83,7 +83,7 @@ Force to cancel when stuck in 'ready to do heist' too long.
 Message when we enter 'ready to do heist'.
 
 ###Game_Kcik_Who_Not_Ready_Yet
-number, second
+number, second, -1 = OFF
 
 After this time up, it will kick who is not ready.
 
