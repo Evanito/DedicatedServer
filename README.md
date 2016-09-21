@@ -9,6 +9,7 @@ This Mod will auto open lobby, wait player, start the game and repeat.
 2. Install this Mod
 3. Open Payday 2
 4. Create a lobby
+5. AFK
 
 ##How to Change Settings?
 
