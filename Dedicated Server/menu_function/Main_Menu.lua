@@ -38,9 +38,11 @@ DedicatedServer.Default_Settings = {
 		"欢迎来到自动房",
 		"本机器人会自动开新房和执行游戏",
 		"如果机器人卡住，这代表有人未准备或载入",
+		"本房有启用ChatCommand，输入[!help]来解更多",
 		"Welcome to Auto-Lobby",
 		"This bot will auto open lobby and start the game",
-		"If bot stuck, it means someone isn't ready or loaded"
+		"If bot stuck, it means someone isn't ready or loaded",
+		"Say(Press t) [!help] for more info about this lobby!!",
 	},
 	["Game_Kcik_Who_Not_Ready_Yet"] = 40,
 	["Addons_ChatCommand_enable"] = true,
