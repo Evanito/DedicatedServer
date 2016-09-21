@@ -4,6 +4,12 @@ http://steamcommunity.com/sharedfiles/filedetails/?id=767516193
 
 This Mod will auto open lobby, wait player, start the game and repeat.
 
+##How to Use?
+1. Install BLT
+2. Install this Mod
+3. Open Payday 2
+4. Create a lobby
+
 ##How to Change Settings?
 
 If there is no [Settings.txt](Dedicated Server/cfg/Settings.txt), it will use Default.
