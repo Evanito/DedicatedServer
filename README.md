@@ -43,7 +43,7 @@ number, second
 After this time up, it will ready to leave planning phase.
 
 ###Lobby_Time_To_Forced_Start_Game
-number, second
+number, second, -1 = OFF
 
 After this time up, it will be foced to leave planning phase and ready to do heist.
 
