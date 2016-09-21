@@ -16,7 +16,12 @@ Hooks:Add("GameSetupUpdate", "BotFixDrillGameSetupUpdate", function(t, dt)
 	if Utils:IsInHeist() then
 		if t > _t_delay then
 			_t_delay = math.round(t) + 1
-			if not _send_bot_tojail and DedicatedServer.Settings.Game_Send_HostBOT_To_Jail and t > 7 then
+			local alv = DedicatedServer:GetPeersAmount()
+			if t > 7 and alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
+				MenuCallbackHandler:load_start_menu_lobby()
+				return
+			end
+			if not _send_bot_tojail and DedicatedServer.Settings.Game_Send_HostBOT_To_Jail and t > 15 then
 				_send_bot_tojail = true
 				local player = managers.player:local_player()
 				managers.player:force_drop_carry()
@@ -31,10 +36,6 @@ Hooks:Add("GameSetupUpdate", "BotFixDrillGameSetupUpdate", function(t, dt)
 			end
 			if DedicatedServer.Settings.Game_HostBOT_Donnot_Release then
 				managers.trade:remove_host_from_respawn_list()
-			end
-			local alv = DedicatedServer:GetPeersAmount()
-			if alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
-				MenuCallbackHandler:load_start_menu_lobby()
 			end
 		end
 	end

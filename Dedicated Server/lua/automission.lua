@@ -13,11 +13,14 @@ if RequiredScript == "lib/managers/menu/contractboxgui" then
 	local DedicatedServer_ContractBoxGui_update = ContractBoxGui.update
 	function ContractBoxGui:update(t,...)
 		DedicatedServer_ContractBoxGui_update(self,t,...)
+		if Utils:IsInHeist() then
+			return
+		end
 		if not DedicatedServer then
-			return			
+			return
 		end
 		if not t or not type(t) == "number" or t < 10 then
-			return			
+			return
 		end
 		if not managers.job:current_contact_data() then
 			DedicatedServer:SetNextHeist()
@@ -29,7 +32,7 @@ if RequiredScript == "lib/managers/menu/contractboxgui" then
 		if t >= self._auto_continue_t then
 			if managers.job then
 				local contact_data = managers.job:current_contact_data()
-				if contact_data and (alv > _Settings.Lobby_Min_Amount_To_Start or t >= self._auto_continue_t + _Settings.Lobby_Min_Amount_To_Start*2) then
+				if contact_data and (alv >= _Settings.Lobby_Min_Amount_To_Start or t >= self._auto_continue_t + _Settings.Lobby_Time_To_Start_Game*2) then
 					MenuCallbackHandler:start_the_game()
 				end
 			end

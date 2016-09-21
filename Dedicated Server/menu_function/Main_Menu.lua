@@ -113,6 +113,15 @@ function DedicatedServer:Reset_Settings()
 		["Game_Send_HostBOT_To_Jail"] = true,
 		["Game_HostBOT_Donnot_Release"] = true,
 		["Game_Cancel_Hesit_Casue_Wait_Too_Long"] = 60,
+		["Game_Announce_When_Ready_To_Start"] = {
+			"!! Auto-Lobby !!",
+			"欢迎来到自动房",
+			"本机器人会自动开新房和执行游戏",
+			"如果机器人卡住，这代表有人未准备或载入",
+			"Welcome to Auto-Lobby",
+			"This bot will auto open lobby and start the game",
+			"If bot stuck, it means someone isn't ready or loaded"
+		},
 	}
 	self:Save_Settings()
 end
