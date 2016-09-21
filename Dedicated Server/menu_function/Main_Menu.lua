@@ -5,6 +5,44 @@ DedicatedServer.options_menu = "DedicatedServer_menu"
 DedicatedServer.Settings = {}
 DedicatedServer.Last_Data = {}
 
+DedicatedServer.Default_Settings = {
+	["Lobby_Name"] = "Auto-Lobby by Dr_Newbie",
+	["Lobby_Announce_When_Someone_Join"] = {
+		"Welcome to this lobby, this lobby host by BOT",
+		"This bot will auto open lobby and start the game",
+		"If bot stuck, it means someone isn't ready or loaded",
+	},
+	["Lobby_Min_Amount_To_Start"] = 1,
+	["Lobby_Time_To_Start_Game"] = 36,
+	["Lobby_Do_Countdown_Before_Start_Game"] = 4,
+	["Lobby_Default_Setting"] = {
+		["job"] = "jewelry_store",
+		["difficulty"] = "overkill_145",
+		["permission"] = "public",
+		["min_rep"] = 0,
+		["drop_in"] = true,
+		["kicking_allowed"] = true,
+		["team_ai"] = true,
+		["auto_kick"] = true
+	},
+	["Lobby_Hesitcycle"] = {
+		{ ["difficulty"] = "overkill_145", ["job"] = "mia" },
+		{ ["difficulty"] = "overkill_145", ["job"] = "hox" },
+	},
+	["Game_Send_HostBOT_To_Jail"] = true,
+	["Game_HostBOT_Donnot_Release"] = true,
+	["Game_Cancel_Hesit_Casue_Wait_Too_Long"] = 60,
+	["Game_Announce_When_Ready_To_Start"] = {
+		"!! Auto-Lobby !!",
+		"欢迎来到自动房",
+		"本机器人会自动开新房和执行游戏",
+		"如果机器人卡住，这代表有人未准备或载入",
+		"Welcome to Auto-Lobby",
+		"This bot will auto open lobby and start the game",
+		"If bot stuck, it means someone isn't ready or loaded"
+	},
+}
+
 Hooks:Add("LocalizationManagerPostInit", "DedicatedServer_loc", function(loc)
 	LocalizationManager:add_localized_strings({
 		["DedicatedServer_menu_title"] = "Dedicated Server",
@@ -76,6 +114,12 @@ function DedicatedServer:Load_Settings()
 	else
 		self:Reset_Settings()
 	end
+	for id, value in pairs(self.Default_Settings) do
+		if not self.Settings[id] then
+			self:Reset_Settings()
+			break
+		end
+	end
 end
 
 function DedicatedServer:Reset_Last_Data()
@@ -86,43 +130,7 @@ function DedicatedServer:Reset_Last_Data()
 end
 
 function DedicatedServer:Reset_Settings()
-	self.Settings = {
-		["Lobby_Name"] = "Auto-Lobby by Dr_Newbie",
-		["Lobby_Announce_When_Someone_Join"] = {
-			"Welcome to this lobby, this lobby host by BOT",
-			"This bot will auto open lobby and start the game",
-			"If bot stuck, it means someone isn't ready or loaded",
-		},
-		["Lobby_Min_Amount_To_Start"] = 1,
-		["Lobby_Time_To_Start_Game"] = 36,
-		["Lobby_Do_Countdown_Before_Start_Game"] = 4,
-		["Lobby_Default_Setting"] = {
-			["job"] = "jewelry_store",
-			["difficulty"] = "overkill_145",
-			["permission"] = "public",
-			["min_rep"] = 0,
-			["drop_in"] = true,
-			["kicking_allowed"] = true,
-			["team_ai"] = true,
-			["auto_kick"] = true
-		},
-		["Lobby_Hesitcycle"] = {
-			{ ["difficulty"] = "overkill_145", ["job"] = "mia" },
-			{ ["difficulty"] = "overkill_145", ["job"] = "hox" },
-		},
-		["Game_Send_HostBOT_To_Jail"] = true,
-		["Game_HostBOT_Donnot_Release"] = true,
-		["Game_Cancel_Hesit_Casue_Wait_Too_Long"] = 60,
-		["Game_Announce_When_Ready_To_Start"] = {
-			"!! Auto-Lobby !!",
-			"欢迎来到自动房",
-			"本机器人会自动开新房和执行游戏",
-			"如果机器人卡住，这代表有人未准备或载入",
-			"Welcome to Auto-Lobby",
-			"This bot will auto open lobby and start the game",
-			"If bot stuck, it means someone isn't ready or loaded"
-		},
-	}
+	self.Settings = self.Default_Settings
 	self:Save_Settings()
 end
 
