@@ -63,12 +63,12 @@ A basic lobby setting.
 A Hesit-cycle list, this setting will be used when cycle is on it.
 
 ###Game_Send_HostBOT_To_Jail
-bool
+bool, true = Send To Jail
 
 Send you, host, bot to jail so others can play the game without you.
 
 ###Game_HostBOT_Donnot_Release
-bool
+bool, true = Don't Release
 
 Don't release\trade you, host, bot to jail so others can play the game without you.
 
@@ -88,6 +88,6 @@ number, second, -1 = OFF
 After this time up, it will kick who is not ready.
 
 ###Addons_ChatCommand_enable
-bool
+bool, true = Enable
 
 Enable ChatCommand
