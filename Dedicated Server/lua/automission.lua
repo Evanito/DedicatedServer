@@ -24,7 +24,7 @@ if RequiredScript == "lib/managers/menu/contractboxgui" then
 			return
 		end
 		local _Settings = DedicatedServer.Settings
-		self._auto_continue_t = self._auto_continue_t or (t + _Settings.Lobby_Dealy_To_Start_Game)
+		self._auto_continue_t = self._auto_continue_t or (t + _Settings.Lobby_Time_To_Start_Game)
 		local alv = DedicatedServer:GetPeersAmount()
 		if t >= self._auto_continue_t then
 			if managers.job then
@@ -34,13 +34,13 @@ if RequiredScript == "lib/managers/menu/contractboxgui" then
 				end
 			end
 		else
-			if _Settings.Lobby_Do_Countdown_Before_Start_Game then
+			if _Settings.Lobby_Do_Countdown_Before_Start_Game > 0 then
 				local tickkk = math.round(self._auto_continue_t - t)
-				if (tickkk%_Settings.Lobby_Do_Countdown_Before_Start_Game_Dealy) == 0 and not _announce_bool then
+				if (tickkk%_Settings.Lobby_Do_Countdown_Before_Start_Game) == 0 and not _announce_bool then
 					_announce_bool = true
 					managers.chat:send_message(ChatManager.GAME, "[Auto-Looby]",  "Game will start in " .. tostring(tickkk) .. "s")
 				end
-				if (tickkk%_Settings.Lobby_Do_Countdown_Before_Start_Game_Dealy) ~= 0 and _announce_bool then
+				if (tickkk%_Settings.Lobby_Do_Countdown_Before_Start_Game) ~= 0 and _announce_bool then
 					_announce_bool = false
 				end
 			end

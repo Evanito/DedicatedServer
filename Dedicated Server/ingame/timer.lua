@@ -20,10 +20,10 @@ Hooks:Add("GameSetupUpdate", "BotFixDrillGameSetupUpdate", function(t, dt)
 				_send_bot_tojail = true
 				local player = managers.player:local_player()
 				managers.player:force_drop_carry()
-				managers.statistics:downed( { death = true } )
+				managers.statistics:downed({ death = true })
 				IngameFatalState.on_local_player_dead()
 				game_state_machine:change_state_by_name("ingame_waiting_for_respawn")
-				player:character_damage():set_invulnerable( true )
+				player:character_damage():set_invulnerable(true)
 				player:character_damage():set_health(0)
 				player:base():_unregister()
 				player:base():set_slot(player, 0)
@@ -33,7 +33,6 @@ Hooks:Add("GameSetupUpdate", "BotFixDrillGameSetupUpdate", function(t, dt)
 				managers.trade:remove_host_from_respawn_list()
 			end
 			local alv = DedicatedServer:GetPeersAmount()
-			log(tostring(alv))
 			if alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
 				MenuCallbackHandler:load_start_menu_lobby()
 			end

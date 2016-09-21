@@ -94,9 +94,8 @@ function DedicatedServer:Reset_Settings()
 			"If bot stuck, it means someone isn't ready or loaded",
 		},
 		["Lobby_Min_Amount_To_Start"] = 1,
-		["Lobby_Dealy_To_Start_Game"] = 36,
-		["Lobby_Do_Countdown_Before_Start_Game"] = true,
-		["Lobby_Do_Countdown_Before_Start_Game_Dealy"] = 4,
+		["Lobby_Time_To_Start_Game"] = 36,
+		["Lobby_Do_Countdown_Before_Start_Game"] = 4,
 		["Lobby_Default_Setting"] = {
 			["job"] = "jewelry_store",
 			["difficulty"] = "overkill_145",
@@ -113,6 +112,7 @@ function DedicatedServer:Reset_Settings()
 		},
 		["Game_Send_HostBOT_To_Jail"] = true,
 		["Game_HostBOT_Donnot_Release"] = true,
+		["Game_Cancel_Hesit_Casue_Wait_Too_Long"] = 60,
 	}
 	self:Save_Settings()
 end
