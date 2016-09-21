@@ -244,7 +244,7 @@ function ChatManager:say(_msg, _msg2)
 end
 function ChatManager:receive_message_by_peer(channel_id, peer, message)
 	_receive_message_by_peer_orig(self, channel_id, peer, message)
-	if not DedicatedServer or not DedicatedServer.Settings or not DedicatedServer.Settings.Addons_ChatCommand_enable then
+	if not DedicatedServer or not DedicatedServer.Settings or not DedicatedServer.Settings.Addons_ChatCommand_Enable then
 		return
 	end
 	local commad = string.lower(tostring(message))

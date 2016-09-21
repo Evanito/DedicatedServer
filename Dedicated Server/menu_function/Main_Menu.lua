@@ -44,8 +44,8 @@ DedicatedServer.Default_Settings = {
 		"If bot stuck, it means someone isn't ready or loaded",
 		"Say(Press t) [!help] for more info about this lobby!!",
 	},
-	["Game_Kcik_Who_Not_Ready_Yet"] = 40,
-	["Addons_ChatCommand_enable"] = true,
+	["Game_Kick_Who_Not_Ready_Yet"] = 40,
+	["Addons_ChatCommand_Enable"] = true,
 }
 
 Hooks:Add("LocalizationManagerPostInit", "DedicatedServer_loc", function(loc)

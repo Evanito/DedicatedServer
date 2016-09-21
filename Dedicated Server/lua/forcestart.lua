@@ -4,7 +4,7 @@ local DedicatedServer_MissionBriefingGui_update = MissionBriefingGui.update
 function MissionBriefingGui:update(t, dt)
 	DedicatedServer_MissionBriefingGui_update(self, t, dt)
 	local Game_Cancel_Hesit_Casue_Wait_Too_Long = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Cancel_Hesit_Casue_Wait_Too_Long or 60
-	local Game_Kcik_Who_Not_Ready_Yet = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Kcik_Who_Not_Ready_Yet or 40
+	local Game_Kick_Who_Not_Ready_Yet = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Kick_Who_Not_Ready_Yet or 40
 	local _Msg = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Announce_When_Ready_To_Start or {}
 	local tickkk = math.round(t) - 1
 	local _Msg_Amount = _Msg and #_Msg or 0
@@ -17,7 +17,7 @@ function MissionBriefingGui:update(t, dt)
 	if t > 7+_Msg_Amount and not self._ready then
 		self:on_ready_pressed()
 	end
-	if Game_Kcik_Who_Not_Ready_Yet >= 0 and t > Game_Kcik_Who_Not_Ready_Yet and t > 7+_Msg_Amount then
+	if Game_Kick_Who_Not_Ready_Yet >= 0 and t > Game_Kick_Who_Not_Ready_Yet and t > 7+_Msg_Amount then
 		--Copy from @FishTaco
 		for k, _peer in pairs(managers.network:session():peers() or {}) do
 			if _peer:id() ~= 1 and _peer:waiting_for_player_ready() == false then
