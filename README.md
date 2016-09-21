@@ -12,7 +12,7 @@ Default is in [Main_Menu.lua](Dedicated Server/menu_function/Main_Menu.lua)
 
 Delete (not clean) Settings.txt when something is wrong.
 
-###Settings
+##Settings
 ###Lobby_Name
 string
 Lobby Name
