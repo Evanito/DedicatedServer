@@ -12,11 +12,11 @@ local _t_delay = 0
 
 local _send_bot_tojail = false
 
-Hooks:Add("GameSetupUpdate", "BotFixDrillGameSetupUpdate", function(t, dt)
+Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
 	if Utils:IsInHeist() then
-		if t > _t_delay then
+		if t > _t_delay and DedicatedServer then
 			_t_delay = math.round(t) + 1
-			local alv = DedicatedServer:GetPeersAmount()
+			local alv = DedicatedServer:GetPeersAmount() or 0
 			if t > 7 and alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
 				MenuCallbackHandler:load_start_menu_lobby()
 				return
