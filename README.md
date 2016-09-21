@@ -4,6 +4,8 @@ http://steamcommunity.com/sharedfiles/filedetails/?id=767516193
 
 This Mod will auto open lobby, wait player, start the game and repeat.
 
+(PS : This is not a real 'Dedicated Server')
+
 ##How to Use?
 1. Install BLT
 2. Install this Mod
