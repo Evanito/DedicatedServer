@@ -40,7 +40,12 @@ Minimum player amount to play the game or it will back to planning phase.
 ###Lobby_Time_To_Start_Game
 number, second
 
-After this time up, it will leave planning phase and ready to do heist.
+After this time up, it will ready to leave planning phase.
+
+###Lobby_Time_To_Forced_Start_Game
+number, second
+
+After this time up, it will be foced to leave planning phase and ready to do heist.
 
 ###Lobby_Do_Countdown_Before_Start_Game
 number, second, 0 = OFF
@@ -76,3 +81,13 @@ Force to cancel when stuck in 'ready to do heist' too long.
 {string, string, ...}
 
 Message when we enter 'ready to do heist'.
+
+###Game_Kcik_Who_Not_Ready_Yet
+number, second
+
+After this time up, it will kick who is not ready.
+
+###Addons_ChatCommand_enable
+bool
+
+Enable ChatCommand
