@@ -116,8 +116,7 @@ function DedicatedServer:Load_Settings()
 	end
 	for id, value in pairs(self.Default_Settings) do
 		if not self.Settings[id] then
-			self:Reset_Settings()
-			break
+			self.Settings[id] = self.Default_Settings[id]
 		end
 	end
 end
