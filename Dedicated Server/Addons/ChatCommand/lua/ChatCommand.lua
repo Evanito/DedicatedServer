@@ -7,7 +7,7 @@ local _init_orig = ChatManager.init
 local rtd_time = {0, 0, 0, 0}
 --local rtd_time_to_all = {Enemy_Health_Bonus = 0}
 --local time2loopcheck = false
-local now_version = "[Dedicated Server.WIP.1.1]"
+local now_version = "[Dedicated Server.WIP.1.2]"
 
 _G.ChatCommand = _G.ChatCommand or {}
 ChatCommand.VIP_LIST = ChatCommand.VIP_LIST or {}
@@ -60,14 +60,14 @@ function ChatManager:init(...)
 					self:say("4: " .. now_peer[4]:name())
 				end
 			else
-				local file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "a")
-				if file then
+				local _file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "a")
+				if _file then
 					local idx = tonumber(type2)
 					if now_peer[idx] then
-						file:write("" .. now_peer[idx]:user_id(), "\n")
+						_file:write("" .. now_peer[idx]:user_id(), "\n")
 						self:say("Host change [" .. now_peer[idx]:name() .."] to VIP")
 					end
-					file:close()
+					_file:close()
 					Read_VIP_List()
 				else
 					self:say("Try again")
@@ -76,15 +76,15 @@ function ChatManager:init(...)
 		end
 	end)
 	self:AddCommand({"donate", "d"}, false, false, function()
-		local file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/donate_msg.txt", "r")
-		if file then
-			local line = file:read()
+		local _file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/donate_msg.txt", "r")
+		if _file then
+			local line = _file:read()
 			while line do
 				self:say(tostring(line))
-				line = file:read()
+				line = _file:read()
 			end
 		end
-		file:close()
+		_file:close()
 	end)
 	self:AddCommand("loud", true, false, function()
 		if managers.groupai and managers.groupai:state() and managers.groupai:state():whisper_mode() then
@@ -300,11 +300,11 @@ function is_VIP(peer)
 end
 
 function Read_VIP_List()
-	local file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "r")
+	local _file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "r")
 	ChatCommand.VIP_LIST = {}
 	ChatCommand.VIP_LIST_IDX = {}
-	if file then
-		local line = file:read()
+	if _file then
+		local line = _file:read()
 		local count = 0
 		while line do
 			line = tostring(line)
@@ -313,9 +313,9 @@ function Read_VIP_List()
 				ChatCommand.VIP_LIST[line] = count
 				table.insert(ChatCommand.VIP_LIST_IDX, line)
 			end
-			line = file:read()
+			line = _file:read()
 		end
-		file:close()
+		_file:close()
 	end
 end
 
@@ -324,11 +324,6 @@ Read_VIP_List()
 function is_run_by_Host()
 	if not Network then return false end
 	return not Network:is_client()
-end
-
-function isPlaying()
-	if not BaseNetworkHandler then return false end
-	return BaseNetworkHandler._gamestate_filter.any_ingame_playing[ game_state_machine:last_queued_state_name() ]
 end
 
 --Copy from Cheat
@@ -388,14 +383,14 @@ function ChatCommand:Menu_VIPMENU_Selected_View(params)
 end
 
 function ChatCommand:Menu_VIPMENU_Selected_Remove(params)
-	local file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "w")
-	if file then
+	local _file, err = io.open("mods/Dedicated Server/Addons/ChatCommand/vip_list.txt", "w")
+	if _file then
 		for k, v in pairs(ChatCommand.VIP_LIST_IDX or {}) do
 			if tostring(v) ~= tostring(params.id) then
-				file:write(tostring(v) .. "\n")			
+				_file:write(tostring(v) .. "\n")			
 			end
 		end
-		file:close()
+		_file:close()
 	end
 	Read_VIP_List()
 	local _dialog_data = {
