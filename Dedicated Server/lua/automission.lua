@@ -32,7 +32,7 @@ if RequiredScript == "lib/managers/menu/contractboxgui" then
 		if t >= self._auto_continue_t then
 			if managers.job then
 				local contact_data = managers.job:current_contact_data()
-				if contact_data and (alv >= _Settings.Lobby_Min_Amount_To_Start or t >= self._auto_continue_t + _Settings.Lobby_Time_To_Forced_Start_Game) then
+				if contact_data and (alv >= _Settings.Lobby_Min_Amount_To_Start or (_Settings.Lobby_Time_To_Forced_Start_Game >= 0 and t >= self._auto_continue_t + _Settings.Lobby_Time_To_Forced_Start_Game)) then
 					MenuCallbackHandler:start_the_game()
 				end
 			end

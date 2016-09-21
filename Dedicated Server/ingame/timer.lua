@@ -12,16 +12,19 @@ local _t_delay = 0
 
 local _send_bot_tojail = false
 
+local _do_cancel_the_heist = false
+
 Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
 	if Utils:IsInHeist() then
-		if t > _t_delay and DedicatedServer and DedicatedServer.Settings then
+		if t > _t_delay and t > 15 and DedicatedServer and DedicatedServer.Settings then
 			_t_delay = math.round(t) + 1
 			local alv = DedicatedServer:GetPeersAmount() or 0
-			if t > 7 and alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
+			if not _do_cancel_the_heist and alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
+				_do_cancel_the_heist = true
 				MenuCallbackHandler:load_start_menu_lobby()
 				return
 			end
-			if not _send_bot_tojail and DedicatedServer.Settings.Game_Send_HostBOT_To_Jail and t > 15 then
+			if not _send_bot_tojail and not _do_cancel_the_heist and DedicatedServer.Settings.Game_Send_HostBOT_To_Jail then
 				_send_bot_tojail = true
 				local player = managers.player:local_player()
 				managers.player:force_drop_carry()
@@ -34,7 +37,7 @@ Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
 				player:base():set_slot(player, 0)
 				return
 			end
-			if DedicatedServer.Settings.Game_HostBOT_Donnot_Release then
+			if not _do_cancel_the_heist and _send_bot_tojail and DedicatedServer.Settings.Game_HostBOT_Donnot_Release then
 				managers.trade:remove_host_from_respawn_list()
 			end
 		end
