@@ -82,12 +82,12 @@ Force to cancel when stuck in 'ready to do heist' too long.
 
 Message when we enter 'ready to do heist'.
 
-###Game_Kcik_Who_Not_Ready_Yet
+###Game_Kick_Who_Not_Ready_Yet
 number, second, -1 = OFF
 
 After this time up, it will kick who is not ready.
 
-###Addons_ChatCommand_enable
+###Addons_ChatCommand_Enable
 bool, true = Enable
 
 Enable ChatCommand
