@@ -45,6 +45,7 @@ function DedicatedServer:SetNextHeist(data, retry)
 	if not is_not_dlc_or_got then
 		retry = retry + 1
 		self:SetNextHeist(nil, retry)
+		return
 	end
 	
 	_Next_Hesit_Ready.difficulty = _Next_Hesit.difficulty or _Next_Hesit_Ready.difficulty
