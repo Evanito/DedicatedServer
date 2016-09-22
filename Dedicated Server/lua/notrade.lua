@@ -23,7 +23,7 @@ function TradeManager:get_criminals_to_respawn()
 end
 
 function TradeManager:remove_criminals_to_respawn(id)
-	if not id or table(id) ~= "number" then
+	if not id or type(id) ~= "number" then
 		return
 	end
 	table.remove(self._criminals_to_respawn, id)
