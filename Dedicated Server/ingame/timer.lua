@@ -37,9 +37,6 @@ Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
 				player:base():set_slot(player, 0)
 				return
 			end
-			if not _do_cancel_the_heist and _send_bot_tojail and DedicatedServer.Settings.Game_HostBOT_Donnot_Release then
-				managers.trade:remove_host_from_respawn_list()
-			end
 		end
 	end
 end)
