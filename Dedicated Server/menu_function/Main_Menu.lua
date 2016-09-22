@@ -44,7 +44,7 @@ DedicatedServer.Default_Settings = {
 		"If bot stuck, it means someone isn't ready or loaded",
 		"Say(Press t) [!help] for more info about this lobby!!",
 	},
-	["Game_Kick_Who_Not_Ready_Yet"] = 40,
+	["Game_Kick_Who_Not_Ready_Yet"] = 55,
 	["Addons_ChatCommand_Enable"] = true,
 }
 

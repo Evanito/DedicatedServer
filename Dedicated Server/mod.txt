@@ -3,7 +3,7 @@
 	"description" : " ",
 	"author" : "Dr_Newbie"
 	"contact" : " ",
-	"version" : "WIP.1.11",
+	"version" : "WIP.1.12",
 	"hooks" : 
 	[
 		{"hook_id" : "lib/managers/menu/missionbriefinggui", "script_path" : "lua/forcestart.lua"},
