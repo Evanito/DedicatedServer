@@ -1,5 +1,7 @@
 _G.DedicatedServer = _G.DedicatedServer or {}
 
+DedicatedServer.Current_Server_Settings = {}
+
 function DedicatedServer:SetNextHeist(data)
 	local _Last_Lobby_Hesitcycle = self.Last_Data.Last_Lobby_Hesitcycle or 0
 	local _Lobby_Hesitcycle = self.Settings.Lobby_Hesitcycle or {}
@@ -35,6 +37,7 @@ function DedicatedServer:SetNextHeist(data)
 end
 
 function DedicatedServer:CreateLobby(data)
+	DedicatedServer.Current_Server_Settings = data or {}
 	managers.menu:on_leave_lobby()
 	managers.job:on_buy_job(data.job, data.difficulty)
 	Global.game_settings.permission = data.permission ~= nil and data.permission or self.Settings.permission
