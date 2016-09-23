@@ -37,10 +37,6 @@ Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
 				player:base():set_slot(player, 0)
 				return
 			end
-			for _id = 2, 4 do
-				if not managers.trade:is_peer_in_custody(_id) then
-				end
-			end
 		end
 	end
 end)

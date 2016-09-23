@@ -12,7 +12,6 @@ function TradeManager:on_player_criminal_death(criminal_name, ...)
 	_DedicatedServer_TradeManager_on_player_criminal_death(self, criminal_name, ...)
 end
 
-
 local _DedicatedServer_TradeManager_is_peer_in_custody = TradeManager.is_peer_in_custody
 
 function TradeManager:is_peer_in_custody(peer_id, ...)
