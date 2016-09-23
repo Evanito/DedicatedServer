@@ -29,6 +29,9 @@ DedicatedServer.Default_Settings = {
 	["Lobby_Hesitcycle"] = {
 		{ ["difficulty"] = "overkill_145", ["job"] = "mia" },
 		{ ["difficulty"] = "overkill_145", ["job"] = "hox" },
+		{ ["difficulty"] = "overkill_145", ["job"] = "born" },
+		{ ["difficulty"] = "overkill_145", ["job"] = "pbr" },
+		{ ["difficulty"] = "overkill_145", ["job"] = "pbr2" },
 	},
 	["Game_Send_HostBOT_To_Jail"] = true,
 	["Game_HostBOT_Donnot_Release"] = true,
