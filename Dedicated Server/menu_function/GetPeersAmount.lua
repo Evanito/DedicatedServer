@@ -14,5 +14,6 @@ function DedicatedServer:GetPeersAmount()
 			end
 		end
 	end
+	alv = tonumber(tostring(alv)) or 0
 	return alv
 end

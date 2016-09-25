@@ -15,11 +15,12 @@ local _send_bot_tojail = false
 local _do_cancel_the_heist = false
 
 Hooks:Add("GameSetupUpdate", "DedicatedServerGameSetupUpdate", function(t, dt)
-	if Utils:IsInHeist() then
+	if Utils:IsInHeist() and DedicatedServer:Is_On() then
 		if t > _t_delay and t > 15 and DedicatedServer and DedicatedServer.Settings then
 			_t_delay = math.round(t) + 1
 			local alv = DedicatedServer:GetPeersAmount() or 0
-			if not _do_cancel_the_heist and alv < DedicatedServer.Settings.Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
+			local _Lobby_Min_Amount_To_Start = tonumber(tostring(DedicatedServer.Settings.Lobby_Min_Amount_To_Start)) or 0
+			if not _do_cancel_the_heist and alv < _Lobby_Min_Amount_To_Start and game_state_machine:current_state_name() ~= "disconnected" then
 				_do_cancel_the_heist = true
 				MenuCallbackHandler:load_start_menu_lobby()
 				return

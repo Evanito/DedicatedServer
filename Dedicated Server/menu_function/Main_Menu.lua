@@ -12,12 +12,13 @@ DedicatedServer.Default_Settings = {
 		"This bot will auto open lobby and start the game",
 		"If bot stuck, it means someone isn't ready or loaded",
 	},
+	["Lobby_Always_Create_New_Lobby"] = false,
 	["Lobby_Min_Amount_To_Start"] = 1,
 	["Lobby_Time_To_Start_Game"] = 36,
 	["Lobby_Time_To_Forced_Start_Game"] = 72,
 	["Lobby_Do_Countdown_Before_Start_Game"] = 4,
 	["Lobby_Default_Setting"] = {
-		["job"] = "jewelry_store",
+		["job"] = "rat",
 		["difficulty"] = "overkill_145",
 		["permission"] = "public",
 		["min_rep"] = 0,
@@ -36,6 +37,7 @@ DedicatedServer.Default_Settings = {
 	["Game_Send_HostBOT_To_Jail"] = true,
 	["Game_HostBOT_Donnot_Release"] = true,
 	["Game_Cancel_Hesit_Casue_Wait_Too_Long"] = 60,
+	["Game_Kick_Who_Not_Ready_Yet"] = 55,
 	["Game_Announce_When_Ready_To_Start"] = {
 		"!! Auto-Lobby !!",
 		"欢迎来到自动房",
@@ -47,16 +49,11 @@ DedicatedServer.Default_Settings = {
 		"If bot stuck, it means someone isn't ready or loaded",
 		"Say(Press t) [!help] for more info about this lobby!!",
 	},
-	["Game_Kick_Who_Not_Ready_Yet"] = 55,
 	["Addons_ChatCommand_Enable"] = true,
 }
 
 Hooks:Add("LocalizationManagerPostInit", "DedicatedServer_loc", function(loc)
-	LocalizationManager:add_localized_strings({
-		["DedicatedServer_menu_title"] = "Dedicated Server",
-		["DedicatedServer_menu_desc"] = " ",
-		["DedicatedServer_menu_Reset_title"] = "Reset",
-	})
+	LocalizationManager:load_localization_file(DedicatedServer.ModPath .. "/loc/en.txt")
 end)
 
 Hooks:Add("MenuManagerSetupCustomMenus", "DedicatedServerOptions", function(menu_manager, nodes)
@@ -133,6 +130,7 @@ end
 function DedicatedServer:Reset_Last_Data()
 	self.Last_Data = {
 		Last_Lobby_Hesitcycle = 1,
+		CreateDedicatedServer = false,
 	}
 	self:Save_Last_Data()
 end
@@ -140,6 +138,10 @@ end
 function DedicatedServer:Reset_Settings()
 	self.Settings = self.Default_Settings
 	self:Save_Settings()
+end
+
+function DedicatedServer:Is_On()
+	return self.Last_Data.CreateDedicatedServer
 end
 
 DedicatedServer:Load_Last_Datat()

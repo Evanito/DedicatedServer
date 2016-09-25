@@ -3,6 +3,9 @@ local _MissionBriefingGui_update_announce = {}
 local DedicatedServer_MissionBriefingGui_update = MissionBriefingGui.update
 function MissionBriefingGui:update(t, dt)
 	DedicatedServer_MissionBriefingGui_update(self, t, dt)
+	if not DedicatedServer:Is_On() then
+		return
+	end
 	local Game_Cancel_Hesit_Casue_Wait_Too_Long = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Cancel_Hesit_Casue_Wait_Too_Long or 60
 	local Game_Kick_Who_Not_Ready_Yet = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Kick_Who_Not_Ready_Yet or 40
 	local _Msg = DedicatedServer and DedicatedServer.Settings and DedicatedServer.Settings.Game_Announce_When_Ready_To_Start or {}

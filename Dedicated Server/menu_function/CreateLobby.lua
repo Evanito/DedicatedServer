@@ -60,7 +60,9 @@ end
 
 function DedicatedServer:CreateLobby(data)
 	self.Current_Server_Settings = data or {}
-	managers.menu:on_leave_lobby()
+	if self.Settings.Lobby_Always_Create_New_Lobby then
+		managers.menu:on_leave_lobby()
+	end
 	managers.job:on_buy_job(data.job, data.difficulty)
 	Global.game_settings.permission = data.permission ~= nil and data.permission or self.Settings.permission
 	Global.game_settings.reputation_permission = type(data.min_rep) == "number" and data.min_rep or self.Settings.min_rep
