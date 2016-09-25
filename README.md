@@ -10,7 +10,7 @@ This Mod will auto open lobby, wait player, start the game and repeat.
 1. Install BLT
 2. Install this Mod
 3. Open Payday 2
-4. Create a lobby
+4. http://i.imgur.com/Myz6gzJ.jpg
 5. AFK
 
 ##How to Change Settings?
