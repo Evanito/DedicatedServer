@@ -37,6 +37,11 @@ number, amount
 
 Minimum player amount to play the game or it will back to planning phase.
 
+###Lobby_Always_Create_New_Lobby
+bool, true = Enable
+
+Do you want to create new lobby to kick everyone?
+
 ###Lobby_Time_To_Start_Game
 number, second
 
